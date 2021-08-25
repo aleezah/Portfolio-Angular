@@ -7,13 +7,15 @@ import { InvestmentsComponent } from './investments/investments.component';
 import { CashValueComponent } from './cash-value/cash-value.component';
 import { NetWorthComponent } from './net-worth/net-worth.component';
 import { HttpClientModule } from '@angular/common/http';
+import { LineChartComponent } from './line-chart/line-chart.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     InvestmentsComponent,
     CashValueComponent,
-    NetWorthComponent
+    NetWorthComponent,
+    LineChartComponent
   ],
   imports: [
     BrowserModule,
