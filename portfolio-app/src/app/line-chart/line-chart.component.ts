@@ -1,52 +1,50 @@
-import { Component, OnInit, AfterViewInit, ElementRef, ViewChild } from '@angular/core';
-import * as Chart from 'chart.js';
+import { Component, Input, OnInit } from '@angular/core';
+import { HttpClient } from '@angular/common/http';
 
 @Component({
   selector: 'app-line-chart',
   templateUrl: './line-chart.component.html',
   styleUrls: ['./line-chart.component.css']
 })
-export class LineChartComponent  {
-  // @ViewChild('lineCanvas') lineCanvas: ElementRef;
-  // lineChart: any;
+export class LineChartComponent implements OnInit {
+  @Input() labels = [] as any;
+  @Input() data = [] as any;
+  
+  type = 'line';
+  options = {
+    responsive: true,
+    maintainAspectRatio: true,
+    bezierCurve: false,
+    scales: {
+      yAxes: [{
+        ticks: {
+          max: 100,
+          min: 0
+        }
+      }]
+    }
+  };
+  //data: any;
+  barchart: any;
+  
+  constructor(private http: HttpClient) { }
+  //Bar Chart
 
-  // constructor() { }
-
-  // ngAfterViewInit(): void {
-  //   this.lineChartMethod();
-  // }
-
-  // lineChartMethod() {
-  //   this.lineChart = new Chart(this.lineCanvas.nativeElement, {
-  //     type: 'line',
-  //     data: {
-  //       labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'November', 'December'],
-  //       datasets: [
-  //         {
-  //           label: 'Sell per week',
-  //           fill: false,
-  //           lineTension: 0.1,
-  //           backgroundColor: 'rgba(75,192,192,0.4)',
-  //           borderColor: 'rgba(75,192,192,1)',
-  //           borderCapStyle: 'butt',
-  //           borderDash: [],
-  //           borderDashOffset: 0.0,
-  //           borderJoinStyle: 'miter',
-  //           pointBorderColor: 'rgba(75,192,192,1)',
-  //           pointBackgroundColor: '#fff',
-  //           pointBorderWidth: 1,
-  //           pointHoverRadius: 5,
-  //           pointHoverBackgroundColor: 'rgba(75,192,192,1)',
-  //           pointHoverBorderColor: 'rgba(220,220,220,1)',
-  //           pointHoverBorderWidth: 2,
-  //           pointRadius: 1,
-  //           pointHitRadius: 10,
-  //           data: [65, 59, 80, 81, 56, 55, 40, 10, 5, 50, 10, 15],
-  //           spanGaps: false,
-  //         }
-  //       ]
-  //     }
-  //   });
-  // }
-
+  ngOnInit() {
+    this.data = {
+      labels: this.labels, //["January", "February", "March", "April", "May", "June", "July"], //months
+      datasets: [{
+        //label: "Angular 11",
+        data: this.data, //[45, 55, 35, 65, 60, 25, 45],
+        backgroundColor: "#f38b4a",
+        lineTension: 0, 
+      }//, {
+      //   label: "Angular 12",
+      //   data: ["35", "69", "45", "96", "50", "60", "45"],
+      //   backgroundColor: "#6970d5",
+      //   lineTension: 0, 
+      // }
+    ]
+    };
+  }
 }
