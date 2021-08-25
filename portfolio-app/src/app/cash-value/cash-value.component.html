@@ -1,19 +1,27 @@
 
 <div class="container">
     <h1>Cash Account Information</h1>
-         
+     
+    <ng-container *ngIf= 'submitClicked'>
     <form [formGroup]="form" (ngSubmit)="submit()">
             
         <div class="form-group">
             <label for="option">Select Option to View:</label>
             <select formControlName="option" class="form-control">
                 <option disabled>Select Option</option>
-                <option *ngFor="let option of optionList">{{option}}</option>
+                <option *ngFor="let option of cashAcct">{{option}}</option>
             </select>
         </div>
         <br>
-            <button class="btn btn-primary" type="submit" [disabled]="!form.valid" click = 'cashNext()'>Submit</button>
-   
-        
+        <button class="btn btn-primary" (click)='submit()'>Submit</button>
     </form>
+</ng-container>
+<ng-container *ngIf= 'backClicked'>
+    <p>Account Name:</p>
+    <p>Account ID</p>
+    <p>Account Type:</p>
+    <p>Account Funds:</p>
+    <br>
+    <button class="btn btn-primary" (click)='back()'>Back</button>
+</ng-container>
 </div>

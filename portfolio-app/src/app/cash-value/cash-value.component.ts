@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
+import { PortfolioService } from '../portfolio.service';
 
 @Component({
   selector: 'app-cash-value',
@@ -8,7 +9,13 @@ import { FormGroup, FormControl, Validators} from '@angular/forms';
 })
 export class CashValueComponent implements OnInit {
 
-  optionList: any = ['Account Id', 'Funds', 'Account Type']
+  cashAcct: any = []
+  submitClicked = true
+  backClicked = false
+
+  constructor(private portfolioService: PortfolioService) {
+    this.cashAcct=this.getTotalAccounts()
+ }
    
   form = new FormGroup({
     option: new FormControl('', Validators.required)
@@ -19,23 +26,26 @@ export class CashValueComponent implements OnInit {
   }
    
   submit(){
-    console.log();
-    if(this.form.value.option === 'Funds')
-    {
-      console.log(this.form.value);
-    }
-    else if(this.form.value.option === 'Account Type')
-    {
-      console.log(this.form.value);
-    }
-    else if(this.form.value.option === 'Account Id')
-    {
-      console.log(this.form.value);
-    }
+    this.submitClicked = false
+    this.backClicked = true
+    console.log(this.cashAcct)
   }
-  constructor() { }
+
+  back(){
+    this.backClicked = false
+    this.submitClicked = true
+  }
 
   ngOnInit(): void {
   }
+  getTotalAccounts(){
+    //TODO: add the actual service call once the api is set up
 
+     this.portfolioService.getCashAccounts().subscribe((cashAccounts)=>{
+
+      this.cashAcct = cashAccounts
+     
+  }
+     )
+  }
 }
