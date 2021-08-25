@@ -9,6 +9,8 @@ import { NetWorthComponent } from './net-worth/net-worth.component';
 import { HttpClientModule } from '@angular/common/http';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { ChartModule } from 'angular2-chartjs';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -22,7 +24,10 @@ import { ChartModule } from 'angular2-chartjs';
     BrowserModule,
     AppRoutingModule,
     HttpClientModule,
-    ChartModule
+    ChartModule,
+    FormsModule,
+    ReactiveFormsModule
+
   ],
   providers: [],
   bootstrap: [AppComponent]
