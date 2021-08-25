@@ -12,7 +12,7 @@ export class PortfolioService {
   }
 
   getInvestments(){
-    return this.http.get<any>(`${this.url}/investmentAccount`)
+    return this.http.get(`${this.url}/investmentAccount`)
     //return [{"investmentaccountid":1,"funds":80000.0,"listOfStocks":[{"stockid":1,"timebought":"9999-12-31T23:59:59.000+00:00","stockname":"Apple","purchaseprice":121.36,"numberofstocks":10000,"investmentaccountids":1,"listOfTransaction":[]}],"listOfTransaction":[]},{"investmentaccountid":2,"funds":89000.0,"listOfStocks":[],"listOfTransaction":[]}]
   }
 

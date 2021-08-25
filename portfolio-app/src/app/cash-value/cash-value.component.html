@@ -8,8 +8,9 @@
         <div class="form-group">
             <label for="option">Select Option to View:</label>
             <select formControlName="option" class="form-control">
-                <option disabled>Select Option</option>
-                <option *ngFor="let option of cashAcct">{{option}}</option>
+                <option disabled>Select Account</option>
+                <option > Choose Account</option>
+                <option *ngFor="let option of acctNames">{{option}}</option>
             </select>
         </div>
         <br>
@@ -17,10 +18,10 @@
     </form>
 </ng-container>
 <ng-container *ngIf= 'backClicked'>
-    <p>Account Name:</p>
-    <p>Account ID</p>
-    <p>Account Type:</p>
-    <p>Account Funds:</p>
+    <p>Account Name: {{accountName}}</p>
+    <p>Account ID: {{accountId}}</p>
+    <p>Account Type: {{accountType}}</p>
+    <p>Account Funds: $ {{accountFunds}}</p>
     <br>
     <button class="btn btn-primary" (click)='back()'>Back</button>
 </ng-container>

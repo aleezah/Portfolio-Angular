@@ -1,9 +1,19 @@
-<div class="container">
-    <h1>Investments</h1>
+<h5>Investments</h5>
 
-    <!-- <p>Total: {{getTotalInvestments() | currency}}</p> -->
-    <div>
-        <p>List of Accounts</p>
+<!-- <p>Total: {{getTotalInvestments() | currency}}</p> -->
+<div>
+    <p>List of Accounts</p>
+</div>
+<p>Total: {{investmentAccounts | currency }}</p>
+
+<!-- <form [formGroup]="form" (ngSubmit)="submit()">
+            
+    <div class="form-group">
+        <label for="option">Select Option to View:</label>
+        <select formControlName="option" class="form-control">
+            <option disabled>Select Option</option>
+            <option *ngFor="let option of optionList">{{option}}</option>
+        </select>
     </div>
     <!-- <p>Total: {{investmentAccounts | currency }}</p> -->
     
@@ -22,5 +32,6 @@
         
     </form>
     
-    <app-line-chart [data]="data" [labels]="labels"></app-line-chart>
-</div>
+</form> -->
+
+<app-line-chart [data]="data" [labels]="labels"></app-line-chart>
