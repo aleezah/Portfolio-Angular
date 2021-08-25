@@ -7,7 +7,9 @@ import { InvestmentsComponent } from './investments/investments.component';
 import { CashValueComponent } from './cash-value/cash-value.component';
 import { NetWorthComponent } from './net-worth/net-worth.component';
 import { HttpClientModule } from '@angular/common/http';
-import { LineChartComponent } from './line-chart/line-chart.component';
+//import { LineChartComponent } from './line-chart/line-chart.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+
 
 @NgModule({
   declarations: [
@@ -15,12 +17,14 @@ import { LineChartComponent } from './line-chart/line-chart.component';
     InvestmentsComponent,
     CashValueComponent,
     NetWorthComponent,
-    LineChartComponent
+    //LineChartComponent
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
