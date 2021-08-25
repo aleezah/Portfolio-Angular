@@ -7,13 +7,13 @@
     </div>
     <!-- <p>Total: {{investmentAccounts | currency }}</p> -->
     
-    <form [formGroup]="form" (ngSubmit)="submit()">
+    <form [formGroup]="form" (ngSubmit)="submit(form.value)">
                 
         <div class="form-group">
             <label for="option">Select Option to View:</label>
             <select formControlName="option" class="form-control">
                 <option disabled>Select Option</option>
-                <option *ngFor="let option of accountNames">{{option}}</option>
+                <option *ngFor="let account of investmentAccounts">{{ account.investmentaccname }}</option>
             </select>
         </div>
         <br>

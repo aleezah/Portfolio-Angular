@@ -18,7 +18,7 @@ export class CashValueComponent implements OnInit {
  }
    
   form = new FormGroup({
-    option: new FormControl('', Validators.required)
+    option: new FormControl('')
   });
    
   get f(){

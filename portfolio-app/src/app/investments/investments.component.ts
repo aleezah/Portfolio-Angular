@@ -16,25 +16,19 @@ export class InvestmentsComponent implements OnInit {
   form = new FormGroup({
     option: new FormControl('', Validators.required)
   });
+  investmentAccount = {} as any;
 
   constructor(private portfolioService: PortfolioService) {
-
-    
-    
     this.labels = ["January", "February", "March", "April", "May", "June", "July"];
     this.data = [45, 55, 35, 65, 60, 25, 45];
-    
-    //this.investmentAccounts = this.getTotalInvestments();
 
  }
 
   ngOnInit(): void {
     this.getInvestmentAccounts();
-    // this.accountNames = this.getInvestmentAccountNames();
   }
 
   getInvestmentAccounts(){
-    //TODO: add the actual service call once the api is set up
 
     this.portfolioService.getInvestments().subscribe((investmentAccounts)=>{
       console.log(investmentAccounts)
@@ -74,7 +68,8 @@ export class InvestmentsComponent implements OnInit {
     return this.accountNames;
   }
 
-  submit(){
-
+  submit(event: any){
+    console.log("submission result:")
+    console.log(event)
   }
 }
