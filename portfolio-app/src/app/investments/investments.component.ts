@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { PortfolioService } from '../portfolio.service';
 
 @Component({
@@ -11,26 +12,37 @@ export class InvestmentsComponent implements OnInit {
   totalInvestments = 0;
   data = [] as any;
   labels = [] as any;
+  accountNames : string[] = [];
+  form = new FormGroup({
+    option: new FormControl('', Validators.required)
+  });
 
   constructor(private portfolioService: PortfolioService) {
 
-    this.getInvestmentAccounts();
-    this.investmentAccounts = this.getTotalInvestments();
+    
+    
     this.labels = ["January", "February", "March", "April", "May", "June", "July"];
     this.data = [45, 55, 35, 65, 60, 25, 45];
+    
+    //this.investmentAccounts = this.getTotalInvestments();
 
  }
 
-  ngOnInit(): void { }
+  ngOnInit(): void {
+    this.getInvestmentAccounts();
+    // this.accountNames = this.getInvestmentAccountNames();
+  }
 
   getInvestmentAccounts(){
     //TODO: add the actual service call once the api is set up
 
     this.portfolioService.getInvestments().subscribe((investmentAccounts)=>{
       console.log(investmentAccounts)
+      this.investmentAccounts = investmentAccounts;
+      this.accountNames = this.getInvestmentAccountNames();
     })
     
-    this.investmentAccounts = [{"investmentaccountid":1,"funds":80000.0,"listOfStocks":[{"stockid":1,"timebought":"9999-12-31T23:59:59.000+00:00","stockname":"Apple","purchaseprice":121.36,"numberofstocks":10000,"investmentaccountids":1,"listOfTransaction":[]}],"listOfTransaction":[]},{"investmentaccountid":2,"funds":89000.0,"listOfStocks":[],"listOfTransaction":[]}];
+    //this.investmentAccounts = [{"investmentaccountid":1,"funds":80000.0,"listOfStocks":[{"stockid":1,"timebought":"9999-12-31T23:59:59.000+00:00","stockname":"Apple","purchaseprice":121.36,"numberofstocks":10000,"investmentaccountids":1,"listOfTransaction":[]}],"listOfTransaction":[]},{"investmentaccountid":2,"funds":89000.0,"listOfStocks":[],"listOfTransaction":[]}];
     
   }
 
@@ -50,5 +62,19 @@ export class InvestmentsComponent implements OnInit {
     return 0;
   }
 
+  getInvestmentAccountNames(){
+    this.accountNames = []
+    console.log("getting account names")
+    console.log(this.investmentAccounts)
+    for(let account of this.investmentAccounts){
+      console.log(account)
+      this.accountNames.push(account.investmentaccname)
+      console.log("name"+account.investmentaccname)
+    }
+    return this.accountNames;
+  }
 
+  submit(){
+
+  }
 }
