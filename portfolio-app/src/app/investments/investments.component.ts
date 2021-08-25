@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { PortfolioService } from '../portfolio.service';
 
 @Component({
   selector: 'app-investments',
@@ -6,13 +7,31 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./investments.component.css']
 })
 export class InvestmentsComponent implements OnInit {
+  investmentAccounts = {} as any;
+  totalInvestments = 0;
 
-  constructor() { }
+  constructor(private portfolioService: PortfolioService) {
+  this.investmentAccounts = this.getTotalInvestments()
+ }
 
-  ngOnInit(): void {
-  }
+  ngOnInit(): void { }
 
   getTotalInvestments(){
-    return 5000;
+    //TODO: add the actual service call once the api is set up
+
+    // this.portfolioService.getInvestments().subscribe((investmentAccounts)=>{
+    //   console.log(investmentAccounts)
+    // })
+    
+    this.investmentAccounts = [{"investmentaccountid":1,"funds":80000.0,"listOfStocks":[{"stockid":1,"timebought":"9999-12-31T23:59:59.000+00:00","stockname":"Apple","purchaseprice":121.36,"numberofstocks":10000,"investmentaccountids":1,"listOfTransaction":[]}],"listOfTransaction":[]},{"investmentaccountid":2,"funds":89000.0,"listOfStocks":[],"listOfTransaction":[]}];
+    
+    this.totalInvestments = 0;
+
+    for(let account of this.investmentAccounts){
+      this.totalInvestments += account.funds;
+      console.log("funds"+account.funds)
+
+    }
+    return this.totalInvestments;
   }
 }

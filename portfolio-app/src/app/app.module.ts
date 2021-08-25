@@ -6,6 +6,7 @@ import { AppComponent } from './app.component';
 import { InvestmentsComponent } from './investments/investments.component';
 import { CashValueComponent } from './cash-value/cash-value.component';
 import { NetWorthComponent } from './net-worth/net-worth.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { NetWorthComponent } from './net-worth/net-worth.component';
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule
+    AppRoutingModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
