@@ -12,6 +12,7 @@ import { ChartModule } from 'angular2-chartjs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 import { HomeComponent } from './home/home.component';
+import { NetChartComponent } from './net-chart/net-chart.component';
 // import { DatePipe } from '@angular/common';
 
 @NgModule({
@@ -21,7 +22,8 @@ import { HomeComponent } from './home/home.component';
     CashValueComponent,
     NetWorthComponent,
     LineChartComponent,
-    HomeComponent
+    HomeComponent,
+    NetChartComponent
   ],
   imports: [
     BrowserModule,
