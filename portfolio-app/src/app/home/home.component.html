@@ -1,3 +1,13 @@
 <p>home works!</p>
 
+<p>Day Gainers:</p>
+<ul>
+    <li *ngFor="let quote of movers.finance.result[0].quotes">{{quote.symbol}}</li>
+</ul>
+
+<p>Day Losers:</p>
+<ul>
+    <li *ngFor="let quote of movers.finance.result[1].quotes">{{quote.symbol}}</li>
+</ul>
+<p>Day Gainers: {{ movers.finance.result[0].quotes | json }}</p>
 <p>The market movers are: {{ movers | json }}</p>

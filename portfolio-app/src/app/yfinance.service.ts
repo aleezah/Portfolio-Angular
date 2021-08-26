@@ -20,4 +20,18 @@ export class YfinanceService {
       }
     })
   }
+
+  getStockInfo(){
+    return this.http.get('https://apidojo-yahoo-finance-v1.p.rapidapi.com/stock/v2/get-summary', {
+      // qs: {symbol: 'AMRN', region: 'US'},
+      headers: {
+        'x-rapidapi-host': 'apidojo-yahoo-finance-v1.p.rapidapi.com',
+        'x-rapidapi-key': '75abbe4638msh2921d6904d01f42p19a211jsne706d9eccb36',
+        // useQueryString: true
+      }
+    }
+    
+
+    )
+  }
 }

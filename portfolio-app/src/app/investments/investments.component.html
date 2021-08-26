@@ -19,6 +19,7 @@
 
     <div *ngIf="investmentAccount && investmentAccount.investmentaccname">
         <h3 >{{investmentAccount.investmentaccname}} #{{ investmentAccount.investmentaccountid}}</h3>
+        <p>{{ investmentAccount.funds}}</p>
     </div >
     
     <div *ngIf="!investmentAccount || !investmentAccount.investmentaccname">
