@@ -1,7 +1,11 @@
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
-import { Component, OnInit } from '@angular/core';
 import { FormGroup, FormControl, Validators} from '@angular/forms';
 import { PortfolioService } from '../portfolio.service';
+import {MatDatepickerInputEvent} from '@angular/material/datepicker';
+import { formatDate } from '@angular/common';
+import { Component, Input, OnInit, Inject, LOCALE_ID, ViewChild } from '@angular/core';
+
+
 
 @Component({
   selector: 'app-net-worth',
@@ -10,10 +14,13 @@ import { PortfolioService } from '../portfolio.service';
 })
 export class NetWorthComponent implements OnInit {
 
-  constructor(private portfolioService: PortfolioService) {
+  
+  constructor(@Inject(LOCALE_ID) private locale: string,private portfolioService: PortfolioService)  {
     this.labels = ["January", "February", "March", "April", "May", "June", "July"];
     this.data = [45, 55, 35, 65, 60, 25, 45];
   }
+  
+  events: any = new Date();
   data = [] as any;
   labels = [] as any;
   netWorthSum=0
@@ -22,6 +29,10 @@ export class NetWorthComponent implements OnInit {
   cashAcct: any = []
   investAcct: any = []
 
+  addEvent(event: MatDatepickerInputEvent<Date>) {
+    this.events =event.value;
+    this.events = formatDate(this.events, 'yyyy-MM-dd',this.locale)
+  }
   ngOnInit(): void {
     this.cashAcct=this.getTotalAccounts()
     this.investAcct=this.getInvestmentAccounts()

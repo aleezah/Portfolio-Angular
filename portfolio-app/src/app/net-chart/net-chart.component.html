@@ -6,5 +6,5 @@
     <button (click)="updateDate(365)" type="button" class="btn btn-outline-secondary">YTD</button>
   </div>
 
-<chart [type]="type" [data]="data" [options]="options" #myNetChart baseChart></chart>
+<chart [type]="type" [data]="data"  #myNetChart baseChart></chart>
 <p>{{options | json}}</p>
