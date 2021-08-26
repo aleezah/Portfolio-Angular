@@ -2,27 +2,26 @@
 <div class="container">
     <h1>Cash Account Information</h1>
      
-    <ng-container *ngIf= 'submitClicked'>
-    <form [formGroup]="form" (ngSubmit)="submit()">
+    <form [formGroup]="form">
             
         <div class="form-group">
-            <label for="option">Select Option to View:</label>
+            <!-- <label for="option">Select Option to View:</label> -->
             <select formControlName="option" class="form-control">
-                <option disabled>Select Account</option>
+                <option disabled>Select Account</option> 
                 <option > Choose Account</option>
-                <option *ngFor="let option of acctNames">{{option}}</option>
+                <ng-container *ngFor="let account of cashAcct; let i = index">
+                <option [value]="i">{{ account.cashaccname }} {{ account.cashaccountid }}</option>
+            </ng-container>
+          
             </select>
         </div>
         <br>
-        <button class="btn btn-primary" (click)='submit()'>Submit</button>
-    </form>
-</ng-container>
-<ng-container *ngIf= 'backClicked'>
-    <p>Account Name: {{accountName}}</p>
-    <p>Account ID: {{accountId}}</p>
-    <p>Account Type: {{accountType}}</p>
-    <p>Account Funds: $ {{accountFunds}}</p>
+    </form>      
+<ng-container >
+    <p>Account Name: {{acct.cashaccname}}</p>
+    <p>Account ID: {{acct.cashaccountid}}</p>
+    <p>Account Type: {{acct.accounttype}}</p>
+    <p>Account Funds: $ {{acct.funds}}</p>
     <br>
-    <button class="btn btn-primary" (click)='back()'>Back</button>
 </ng-container>
 </div>

@@ -13,11 +13,7 @@ export class CashValueComponent implements OnInit {
   acctNames: string[] = [];
   submitClicked = true
   backClicked = false
-  accountFunds=0
-  accountName=""
-  accountId=0
-  accountType=""
-  acct = this.cashAcct[0]
+  acct = {} as any;
   
 
   constructor(private portfolioService: PortfolioService) {
@@ -35,19 +31,14 @@ export class CashValueComponent implements OnInit {
   }
    
   submit(){
-    console.log(this.form.value.option)
-    if(this.form.value === '')
-    {
-
-    }
-    else{
+   
     this.submitClicked = false
     this.backClicked = true
     console.log(this.form.value.option)
 
     
     
-    for(let account of this.cashAcct){
+    /*for(let account of this.cashAcct){
      // console.log(account.cashaccname)
       if (this.form.value.option===account.cashaccname)
       {
@@ -59,16 +50,18 @@ export class CashValueComponent implements OnInit {
       }
       console.log(account)
     }
-  }
+  */
   }
 
   back(){
     this.backClicked = false
     this.submitClicked = true
+
   }
 
   ngOnInit(): void {
     this.cashAcct=this.getTotalAccounts()
+    this.onChanges()
   }
   getTotalAccounts(){
     //TODO: add the actual service call once the api is set up
@@ -77,13 +70,20 @@ export class CashValueComponent implements OnInit {
 
       this.cashAcct = cashAccounts
       
-      this.acctNames=this.getCashAccountNames()
+    //  this.acctNames=this.getCashAccountNames()
       
      
   }
   
      ) 
   }
+
+  onChanges(): void {
+    this.form.valueChanges.subscribe(val => {
+      this.acct = this.cashAcct[val.option];
+    })
+  }
+/*
   getCashAccountNames(){
     this.acctNames = []
     console.log("getting account names")
@@ -94,6 +94,6 @@ export class CashValueComponent implements OnInit {
       console.log("name"+account.cashaccname)
     }
     return this.acctNames;
-  }
+  }*/
   
 }
