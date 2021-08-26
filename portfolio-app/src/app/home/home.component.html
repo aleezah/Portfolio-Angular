@@ -1,13 +1,50 @@
-<p>home works!</p>
+<!-- <p *ngFor="let stock of stockInfoList">{{stock.symbol}} - {{stockNames[stock.symbol]}}</p> -->
+<p>{{stockNames | json }}</p>
+<p>{{stockPercents | json }}</p>
+    <!-- - {{stockNames[stock.quoteType.symbol] }}</p> -->
 
-<p>Day Gainers:</p>
-<ul>
-    <li *ngFor="let quote of movers.finance.result[0].quotes">{{quote.symbol}}</li>
-</ul>
+<div class="container">
+    <h1>Portfolio Home</h1>
 
-<p>Day Losers:</p>
+    <div style="width: 20%;">
+        <h4>Day Gainers:</h4>
+        <ul style="padding-left: 0px;">
+            <li *ngFor="let stock of stockInfoList" class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <div class="fw-bold">{{stock.symbol}}</div>
+                    {{stockNames[stock.symbol]}}
+                </div>
+                <span style="font-size: medium;" class="badge bg-success">&#8593; {{stockPercents[stock.symbol]}}</span>
+            </li>
+        </ul>
+    </div>
+    <hr>
+    <div style="width: 20%;">
+        <h4>Day Losers:</h4>
+        <ul style="padding-left: 0px;">
+            <!-- <li *ngFor="let stock of stockInfoList">{{stock.quoteType.symbol}} - {{ stock.quoteType.longName }} &#8593; 15%</li> -->
+            <li *ngFor="let stock of stockInfoList" class="list-group-item d-flex justify-content-between align-items-start">
+                <div class="ms-2 me-auto">
+                    <!-- <div class="fw-bold">{{stock.quoteType.symbol}}</div>
+                        {{ stock.quoteType.longName }}
+                </div> -->
+                <div class="fw-bold">STCK</div>
+                        Stock
+                </div>
+                <span style="font-size: medium;" class="badge bg-danger">&#8595; 15%</span>
+                </li>
+        </ul>
+    </div>
+</div>
+
+
+
+<!-- <p>{{stockInfoList | json}}</p> -->
+<!-- <p>Day Losers:</p>
 <ul>
     <li *ngFor="let quote of movers.finance.result[1].quotes">{{quote.symbol}}</li>
-</ul>
-<p>Day Gainers: {{ movers.finance.result[0].quotes | json }}</p>
-<p>The market movers are: {{ movers | json }}</p>
+</ul> -->
+
+<!-- <p>stock info: {{ stockInfo | json }}</p> -->
+<!-- <p>Day Gainers: {{ movers.finance.result[0].quotes | json }}</p>
+<p>The market movers are: {{ movers | json }}</p> -->
