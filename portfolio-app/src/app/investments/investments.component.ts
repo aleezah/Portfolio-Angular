@@ -29,6 +29,8 @@ export class InvestmentsComponent implements OnInit {
     this.getInvestmentAccounts();
 
     this.onChanges()
+
+    this.getInvestmentHistory()
   }
 
   getInvestmentAccounts(){
@@ -66,6 +68,12 @@ export class InvestmentsComponent implements OnInit {
   onChanges(): void {
     this.form.valueChanges.subscribe(val => {
       this.investmentAccount = this.investmentAccounts[val.option];
+    })
+  }
+
+  getInvestmentHistory(){
+    this.portfolioService.getInvestmentHistory().subscribe((history)=>{
+      console.log(history)
     })
   }
 

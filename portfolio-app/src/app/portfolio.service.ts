@@ -25,6 +25,10 @@ export class PortfolioService {
     return this.http.get(`${this.url}/stocks/all`)
   }
 
+  getInvestmentHistory(){
+    return this.http.get(`${this.url}/investmentAccount/historialValue/1`)
+  }
+
   test(){
     let cashAccounts = [{"cashaccountid":1,"funds":50000.0,"accounttype":"Checking","cashaccname":"Citi Saving"},{"cashaccountid":2,"funds":125000.0,"accounttype":"Saving","cashaccname":"JP Morgar Saving"}];
     cashAccounts[0].cashaccountid
