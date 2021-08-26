@@ -17,7 +17,7 @@ export class PortfolioService {
   }
 
   getCashAccounts(){
-    return this.http.get<any>(`${this.url}/Cash Account`)
+    return this.http.get<any>(`${this.url}/CashAccount`)
     //return [{"investmentaccountid":1,"funds":80000.0,"listOfStocks":[{"stockid":1,"timebought":"9999-12-31T23:59:59.000+00:00","stockname":"Apple","purchaseprice":121.36,"numberofstocks":10000,"investmentaccountids":1,"listOfTransaction":[]}],"listOfTransaction":[]},{"investmentaccountid":2,"funds":89000.0,"listOfStocks":[],"listOfTransaction":[]}]
   }
 
@@ -27,6 +27,12 @@ export class PortfolioService {
 
   getInvestmentHistory(){
     return this.http.get(`${this.url}/investmentAccount/historialValue/1`)
+  }
+  getCashHistory(){
+    return this.http.get(`${this.url}/CashAccount/historicalValueById/1`)
+  }
+  getNetWorthHistory(){
+    return this.http.get(`${this.url}/investmentAccount/networth`)
   }
 
   test(){
