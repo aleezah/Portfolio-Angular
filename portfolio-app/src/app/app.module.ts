@@ -16,7 +16,8 @@ import { NetChartComponent } from './net-chart/net-chart.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import {MatDatepickerModule} from '@angular/material/datepicker'
 import {MatInputModule} from '@angular/material/input'
-import {MatNativeDateModule} from '@angular/material/core'
+import {MatNativeDateModule} from '@angular/material/core';
+import { CashChartComponent } from './cash-chart/cash-chart.component'
 // import { DatePipe } from '@angular/common';
 
 @NgModule({
@@ -27,7 +28,8 @@ import {MatNativeDateModule} from '@angular/material/core'
     NetWorthComponent,
     LineChartComponent,
     HomeComponent,
-    NetChartComponent
+    NetChartComponent,
+    CashChartComponent
   ],
   imports: [
     BrowserModule,

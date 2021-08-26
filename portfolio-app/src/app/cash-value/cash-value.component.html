@@ -17,10 +17,16 @@
         <br>
     </form>      
 <ng-container >
-    <p>Account Name: {{acct.cashaccname}}</p>
-    <p>Account ID: {{acct.cashaccountid}}</p>
-    <p>Account Type: {{acct.accounttype}}</p>
-    <p>Account Funds: $ {{acct.funds}}</p>
+    <h3>Account Name: {{acct.cashaccname}}</h3>
+    <h3>Account ID: {{acct.cashaccountid}}</h3>
+    <h3>Account Type: {{acct.accounttype}}</h3>
+    <h3>Account Funds: $ {{acct.funds}}</h3>
     <br>
 </ng-container>
+
+<div *ngIf="!cashAcct || !cashAcct.cashaccname">
+    <h3 >All Cash Accounts</h3>
+    <app-cash-chart [data]="data" [labels]="labels"></app-cash-chart>
+</div>
+
 </div>

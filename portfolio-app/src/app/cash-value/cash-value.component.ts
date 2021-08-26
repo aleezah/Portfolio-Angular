@@ -14,6 +14,8 @@ export class CashValueComponent implements OnInit {
   submitClicked = true
   backClicked = false
   acct = {} as any;
+  data = [] as any;
+  labels = [] as any;
   
 
   constructor(private portfolioService: PortfolioService) {
