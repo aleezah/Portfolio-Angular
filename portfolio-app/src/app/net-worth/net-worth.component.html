@@ -1,1 +1,14 @@
-<p>net-worth works!</p>
+<div class="container">
+    <h1>Net Worth</h1>
+    <h5>Total Cash: ${{cashTotal}}</h5>
+    <h5>Total Investment: ${{investTotal}}</h5>
+    <h5>Total Net Worth: ${{investTotal + cashTotal}}</h5>
+
+    <br>
+    <div>
+
+        <app-line-chart [data]="data" [labels]="labels"></app-line-chart>
+    </div>
+
+    
+</div>
