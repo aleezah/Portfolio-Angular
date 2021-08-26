@@ -2,6 +2,7 @@ import { Component, Input, OnInit, Inject, LOCALE_ID, ViewChild } from '@angular
 import { HttpClient } from '@angular/common/http';
 import { formatDate } from '@angular/common';
 import { BaseChartDirective } from 'ng2-charts';
+import { PortfolioService } from '../portfolio.service';
 
 @Component({
   selector: 'app-net-chart',
@@ -14,6 +15,8 @@ export class NetChartComponent implements OnInit {
   startDate = new Date() as any;
   options = {} as any;
   timePeriod = (1000);
+  netAccount=[] as any
+  counter=0;
   // @ViewChild(BaseChartDirective) chart: any;
   @ViewChild('myNetChart') myNetChart : any;
   
@@ -22,7 +25,7 @@ export class NetChartComponent implements OnInit {
   //data: any;
   barchart: any;
   
-  constructor(@Inject(LOCALE_ID) private locale: string) {
+  constructor(@Inject(LOCALE_ID) private locale: string, private portfolioService: PortfolioService) {
     // this.startDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
     this.startDate = formatDate(new Date().getTime()-this.timePeriod * 24 * 60 * 60 * 1000,'yyyy-MM-dd',this.locale)
 
@@ -93,4 +96,26 @@ export class NetChartComponent implements OnInit {
 
   }
 
+  getTotalAccounts(){
+    //TODO: add the actual service call once the api is set up
+
+     this.portfolioService.getNetWorthHistory().subscribe((netAccounts)=>{
+
+      this.netAccount = netAccounts
+      console.log(this.netAccount)
+
+      /*for (let account of this.oldCashAccount )
+      {
+        this.labels.push(this.oldCashAccount[this.counter].entrydate)
+        this.data[this.counter]=this.oldCashAccount[this.counter].totalvalue
+        console.log(this.oldCashAccount[this.counter].entrydate)
+        console.log(this.counter)
+          this.counter++
+      }*/
+     
+    }
+     )
+
 }
+}
+
