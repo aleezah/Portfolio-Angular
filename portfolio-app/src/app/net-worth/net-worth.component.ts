@@ -21,6 +21,9 @@ export class NetWorthComponent implements OnInit {
   }
   
   events: any = new Date();
+  day:any = new Date();
+  year:any = new Date();
+  month:any = new Date();
   data = [] as any;
   labels = [] as any;
   netWorthSum=0
