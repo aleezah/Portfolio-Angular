@@ -1,1 +1,33 @@
-<p>net-worth works!</p>
+<div class="container">
+    <h1>Net Worth</h1>
+    <h2> Your Net Worth Today</h2>
+    <p>Total Cash: ${{cashTotal}}</p>
+    <p>Total Investment: ${{investTotal}}</p>
+    <p>Total Net Worth: ${{investTotal + cashTotal}}</p>
+    <br>
+    <app-net-chart [data]="data" [labels]="labels"></app-net-chart>
+    <br>
+    <h2>Past Net Worth</h2>
+    <mat-form-field appearance="fill">
+        <mat-label>Pick a date</mat-label>
+        <input matInput [matDatepicker]="picker" (dateChange)="addEvent($event)">
+        
+        <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
+        
+      </mat-form-field>
+      <p>This is the date {{events}} dsfs</p>
+      
+
+
+    
+   
+   
+    <div>
+
+        
+    </div>
+
+    
+</div>
+

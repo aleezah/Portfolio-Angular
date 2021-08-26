@@ -1,0 +1,10 @@
+
+<div class="btn-group" role="group" aria-label="Basic example">
+    <button (click)="updateDate(7)" type="button" class="btn btn-outline-secondary">Week</button>
+    <button (click)="updateDate(30)" type="button" class="btn btn-outline-secondary">Month</button>
+    <button (click)="updateDate(90)" type="button" class="btn btn-outline-secondary">Quarter</button>
+    <button (click)="updateDate(365)" type="button" class="btn btn-outline-secondary">YTD</button>
+  </div>
+
+<chart [type]="type" [data]="data"  #myNetChart baseChart></chart>
+<p>{{options | json}}</p>

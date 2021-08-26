@@ -7,8 +7,7 @@
         <div class="form-group">
             <!-- <label for="option">Select Option to View:</label> -->
             <select formControlName="option" class="form-control">
-                <option disabled>Select Account</option> 
-                <option > Choose Account</option>
+                <option disabled>Select Account</option> -->
                 <ng-container *ngFor="let account of cashAcct; let i = index">
                 <option [value]="i">{{ account.cashaccname }} {{ account.cashaccountid }}</option>
             </ng-container>

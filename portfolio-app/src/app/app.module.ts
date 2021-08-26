@@ -12,6 +12,11 @@ import { ChartModule } from 'angular2-chartjs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ChartsModule } from 'ng2-charts';
 import { HomeComponent } from './home/home.component';
+import { NetChartComponent } from './net-chart/net-chart.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import {MatDatepickerModule} from '@angular/material/datepicker'
+import {MatInputModule} from '@angular/material/input'
+import {MatNativeDateModule} from '@angular/material/core'
 // import { DatePipe } from '@angular/common';
 
 @NgModule({
@@ -21,7 +26,8 @@ import { HomeComponent } from './home/home.component';
     CashValueComponent,
     NetWorthComponent,
     LineChartComponent,
-    HomeComponent
+    HomeComponent,
+    NetChartComponent
   ],
   imports: [
     BrowserModule,
@@ -30,7 +36,12 @@ import { HomeComponent } from './home/home.component';
     ChartModule,
     FormsModule,
     ReactiveFormsModule,
-    ChartsModule
+    ChartsModule,
+    BrowserAnimationsModule,
+    MatDatepickerModule,
+    MatInputModule,
+    MatNativeDateModule
+
     // DatePipe
   ],
   providers: [],
