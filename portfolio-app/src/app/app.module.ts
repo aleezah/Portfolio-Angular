@@ -10,7 +10,9 @@ import { HttpClientModule } from '@angular/common/http';
 import { LineChartComponent } from './line-chart/line-chart.component';
 import { ChartModule } from 'angular2-chartjs';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
-
+import { ChartsModule } from 'ng2-charts';
+import { HomeComponent } from './home/home.component';
+// import { DatePipe } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -18,7 +20,8 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     InvestmentsComponent,
     CashValueComponent,
     NetWorthComponent,
-    LineChartComponent
+    LineChartComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -26,7 +29,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     HttpClientModule,
     ChartModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    ChartsModule
+    // DatePipe
   ],
   providers: [],
   bootstrap: [AppComponent]
