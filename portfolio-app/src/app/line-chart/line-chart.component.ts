@@ -112,7 +112,7 @@ export class LineChartComponent implements OnInit {
         console.log(this.counter)
         }
         else if(account.investmentaccountid==2)
-        {this.data1[this.counter]=this.oldInvAccount[this.counter-1].currentvalue
+        {this.data1[this.counter]=this.oldInvAccount[this.counter].currentvalue
         console.log(this.oldInvAccount[this.counter].entrydate)
         console.log(this.counter)
         }

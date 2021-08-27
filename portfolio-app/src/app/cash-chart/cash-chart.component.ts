@@ -161,13 +161,13 @@ export class CashChartComponent implements OnInit {
       // labels: this.labels,
       //the format of the time 2020-12-31T23:59:59.000+00:00 is YYYY-MM-DDThh:mm:SSS+00:00
       datasets: [{
-        label: "Citi Savings $",
-        data: this.data,
+        label: "JP Morgan $",
+        data: this.data1,
         backgroundColor: "#6970d5",
         lineTension: 0, 
       }, {
-         label: "JP Morgan $",
-         data:this.data1,
+         label: "Citi Savings $",
+         data:this.data,
          backgroundColor: "#f38b4a",
          lineTension: 0, 
        }

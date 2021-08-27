@@ -34,7 +34,8 @@ export class NetChartComponent implements OnInit {
   //Bar Chart
 
   ngOnInit() {
-    this.options = {
+    this.getTotalAccounts()
+    /*this.options = {
       responsive: true,
       maintainAspectRatio: true,
       bezierCurve: false,
@@ -81,7 +82,7 @@ export class NetChartComponent implements OnInit {
       //   lineTension: 0, 
       // }
     ]
-    };
+    };*/
   }
 
   updateDate(days: number){    
@@ -102,16 +103,59 @@ export class NetChartComponent implements OnInit {
      this.portfolioService.getNetWorthHistory().subscribe((netAccounts)=>{
 
       this.netAccount = netAccounts
-      console.log(this.netAccount)
+      console.log(netAccounts)
 
-      /*for (let account of this.oldCashAccount )
+      for (let account of this.netAccount )
       {
-        this.labels.push(this.oldCashAccount[this.counter].entrydate)
-        this.data[this.counter]=this.oldCashAccount[this.counter].totalvalue
-        console.log(this.oldCashAccount[this.counter].entrydate)
+        this.labels.push(this.netAccount[this.counter].entryDate)
+        this.data[this.counter]=this.netAccount[this.counter].value
+        console.log(this.netAccount[this.counter].entryDate)
         console.log(this.counter)
           this.counter++
-      }*/
+      }
+      this.options = {
+        responsive: true,
+        maintainAspectRatio: true,
+        bezierCurve: false,
+        scales: {
+          xAxes: [{
+            type: "time",
+            time: {
+              parser: "YYYY-MM-DD",
+              
+            },
+            scaleLabel: {
+              display:     true,
+              labelString: 'Date'
+            },
+            ticks: {
+              max: "2020-11-31",
+              min: this.startDate //"2020-01-31"
+            }
+          }],
+          yAxes: [{
+            ticks: {
+              // max: 100,
+              min: 0
+            }
+          }]
+        }
+      };
+  
+      console.log(this.startDate)
+      console.log("labels"+this.labels)
+      this.data = {
+        labels:this.labels,
+        datasets: [{
+          label: "Total Net Worth",
+          data: this.data,
+          backgroundColor: "#6970d5",
+          lineTension: 100, 
+        }
+      ],
+       
+      };
+
      
     }
      )

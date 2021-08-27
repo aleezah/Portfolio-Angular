@@ -16,8 +16,8 @@ export class NetWorthComponent implements OnInit {
 
   
   constructor(@Inject(LOCALE_ID) private locale: string,private portfolioService: PortfolioService)  {
-    this.labels = ["January", "February", "March", "April", "May", "June", "July"];
-    this.data = [45, 55, 35, 65, 60, 25, 45];
+  //  this.labels = ["January", "February", "March", "April", "May", "June", "July"];
+    //this.data = [45, 55, 35, 65, 60, 25, 45];
   }
   
   events: any = new Date();

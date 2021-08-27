@@ -20,8 +20,7 @@ export class InvestmentsComponent implements OnInit {
   startDate = "";
 
   constructor(private portfolioService: PortfolioService) {
-    this.labels = ["January", "February", "March", "April", "May", "June", "July"];
-    this.data = [45, 55, 35, 65, 60, 25, 45];
+   
 
  }
 
