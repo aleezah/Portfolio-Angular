@@ -6,7 +6,7 @@ import { Injectable } from '@angular/core';
 })
 export class YfinanceService {
   host = 'apidojo-yahoo-finance-v1.p.rapidapi.com'
-  key =  'b5c7c61b5bmsh7f85c913663b11ap1c64f9jsn27901ccc6c4b'
+  key =  'a08d6debbcmsh7f9d6e1be5d4fedp1fc813jsn3f2c6e66d2d8'
 
   constructor(private http: HttpClient) { }
 

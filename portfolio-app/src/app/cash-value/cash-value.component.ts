@@ -16,7 +16,7 @@ export class CashValueComponent implements OnInit {
   acct = {} as any;
   data = [] as any;
   labels = [] as any;
-  
+  totalCash = 0;
 
   constructor(private portfolioService: PortfolioService) {
     
@@ -25,7 +25,7 @@ export class CashValueComponent implements OnInit {
  }
    
   form = new FormGroup({
-    option: new FormControl('')
+    option: new FormControl("All Cash Accounts")
   });
    
   get f(){
@@ -71,6 +71,8 @@ export class CashValueComponent implements OnInit {
      this.portfolioService.getCashAccounts().subscribe((cashAccounts)=>{
 
       this.cashAcct = cashAccounts
+
+      this.getCashTotal()
       
     //  this.acctNames=this.getCashAccountNames()
       
@@ -79,6 +81,16 @@ export class CashValueComponent implements OnInit {
   
      ) 
   }
+
+  getCashTotal(){
+    this.totalCash=0
+    for (let account of this.cashAcct )
+    {
+      this.totalCash=account.funds+this.totalCash
+    }
+    return this.totalCash
+
+}
 
   onChanges(): void {
     this.form.valueChanges.subscribe(val => {

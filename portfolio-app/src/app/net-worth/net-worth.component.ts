@@ -44,12 +44,9 @@ export class NetWorthComponent implements OnInit {
   getTotalAccounts()
   {
     this.portfolioService.getCashAccounts().subscribe((cashAccounts)=>{
-    this.cashAcct = cashAccounts
-    this.getCashTotal()
-
-    }
-    )
-
+      this.cashAcct = cashAccounts
+      this.getCashTotal()
+    });
   } 
   getInvestmentAccounts(){
 

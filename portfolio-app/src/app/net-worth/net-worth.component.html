@@ -1,9 +1,9 @@
 <div class="container">
     <h1>Net Worth</h1>
     <h2> Your Net Worth Today</h2>
-    <p>Total Cash: ${{cashTotal}}</p>
-    <p>Total Investment: ${{investTotal}}</p>
-    <p>Total Net Worth: ${{investTotal + cashTotal}}</p>
+    <p>Total Cash: {{cashTotal | currency}}</p>
+    <p>Total Investment: {{investTotal | currency}}</p>
+    <b><p>Total Net Worth: {{ (investTotal + cashTotal) | currency}}</p></b>
     <br>
     <app-net-chart [data]="data" [labels]="labels"></app-net-chart>
     <br>

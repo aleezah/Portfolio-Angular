@@ -159,7 +159,7 @@ export class LineChartComponent implements OnInit {
         backgroundColor: "#6970d5",
         lineTension: 0, 
       }, {
-         label: "Citi Investment #2 $",
+         label: "Fidelity Investment #2 $",
          data:this.data1,
          backgroundColor: "#f38b4a",
          lineTension: 0, 
