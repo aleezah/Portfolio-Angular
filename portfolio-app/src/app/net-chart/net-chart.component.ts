@@ -12,30 +12,27 @@ import { PortfolioService } from '../portfolio.service';
 export class NetChartComponent implements OnInit {
   @Input() labels = [] as any;
   @Input() data = [] as any;
+  @Input() data1 = [] as any;
   startDate = new Date() as any;
   options = {} as any;
   timePeriod = (1000);
-  netAccount=[] as any
-  counter=0;
-  // @ViewChild(BaseChartDirective) chart: any;
-  @ViewChild('myNetChart') myNetChart : any;
+  counter=0
+  oldNetAccount: any = []
+// @ViewChild(BaseChartDirective) chart: any;
+@ViewChild('myNetChart') myNetChart : any;
   
-  type = 'line';
+type = 'line';
+//data: any;
+barchart: any;
 
-  //data: any;
-  barchart: any;
-  
   constructor(@Inject(LOCALE_ID) private locale: string, private portfolioService: PortfolioService) {
     // this.startDate = this.datePipe.transform(new Date(), 'yyyy-MM-dd');
     this.startDate = formatDate(new Date().getTime()-this.timePeriod * 24 * 60 * 60 * 1000,'yyyy-MM-dd',this.locale)
-
   }
 
-  //Bar Chart
-
-  ngOnInit() {
-    this.getTotalAccounts()
-    /*this.options = {
+  ngOnInit(): void {
+   this.getTotalAccounts()
+   /* this.options = {
       responsive: true,
       maintainAspectRatio: true,
       bezierCurve: false,
@@ -66,7 +63,7 @@ export class NetChartComponent implements OnInit {
 
     console.log(this.startDate)
     this.data = {
-      labels: ["2021-01-31","2021-03-31","2021-07-21","2021-08-15","2021-08-17","2021-09-20"],//["January", "February", "March", "April", "May", "June", "July"]
+      labels: ["2021-01-31","2021-03-31","2021-07-21","2021-08-15","2021-08-17","2021-09-20","2021-11-30"],//["January", "February", "March", "April", "May", "June", "July"]
       // labels: this.labels,
       //the format of the time 2020-12-31T23:59:59.000+00:00 is YYYY-MM-DDThh:mm:SSS+00:00
       datasets: [{
@@ -93,26 +90,27 @@ export class NetChartComponent implements OnInit {
     this.myNetChart.chart.options = this.options;
     this.myNetChart.chart.update();
     // console.log(this.myLineChart.chart)
-    // this.ngOnInit()
+    // 
 
   }
 
   getTotalAccounts(){
-    //TODO: add the actual service call once the api is set up
 
-     this.portfolioService.getNetWorthHistory().subscribe((netAccounts)=>{
+    this.portfolioService.getNetWorthHistory().subscribe((netAccount)=>{
 
-      this.netAccount = netAccounts
-      console.log(netAccounts)
-
-      for (let account of this.netAccount )
+      this.oldNetAccount = netAccount
+      console.log(this.oldNetAccount) 
+      this.counter=this.oldNetAccount.length
+      for (let account of this.oldNetAccount )
       {
-        this.labels.push(this.netAccount[this.counter].entryDate)
-        this.data[this.counter]=this.netAccount[this.counter].value
-        console.log(this.netAccount[this.counter].entryDate)
-        console.log(this.counter)
-          this.counter++
+        this.labels[this.counter-1]=account.entryDate
+        this.data[this.counter-1]=account.value
+        console.log("date   " + account.entryDate)
+        console.log("value   " + account.value)
+        this.counter--
+
       }
+      console.log(this.labels)
       this.options = {
         responsive: true,
         maintainAspectRatio: true,
@@ -143,23 +141,26 @@ export class NetChartComponent implements OnInit {
       };
   
       console.log(this.startDate)
-      console.log("labels"+this.labels)
       this.data = {
-        labels:this.labels,
+        labels: this.labels,
+        // labels: this.labels,
+        //the format of the time 2020-12-31T23:59:59.000+00:00 is YYYY-MM-DDThh:mm:SSS+00:00
         datasets: [{
-          label: "Total Net Worth",
-          data: this.data,
+          label: "Net Worth: $",
+           data: this.data,
           backgroundColor: "#6970d5",
-          lineTension: 100, 
-        }
-      ],
-       
+          lineTension: 0, 
+        }//, {
+        //   label: "Angular 12",
+        //   data: ["35", "69", "45", "96", "50", "60", "45"],
+        //   backgroundColor: "#6970d5",
+        //   lineTension: 0, 
+        // }
+      ]
       };
+  }
+    )
 
-     
-    }
-     )
 
 }
 }
-
