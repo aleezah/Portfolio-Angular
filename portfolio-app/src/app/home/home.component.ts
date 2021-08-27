@@ -13,16 +13,44 @@ export class HomeComponent implements OnInit {
   stockInfoListLosers = [] as any;
   stockNames = {} as any;
   stockPercents = {} as any;
+  indices = [] as any;
 
-  numberOfGainers = 1;
+  numberOfGainers = 5;
   // stockInfoList = [{symbol: "AMZN"}, {symbol: "GOOG"}] as any;
   // stockNames = {AMZN: "Amazon", GOOG: "Google"} as any;
   // stockPercents = {AMZN: "15%", GOOG: "10%"} as any;
 
+
+  // Dow Jones Industrial Average: 
+  // S&P/TSX Composite index: ^GSPTSE
+  // HANG SENG INDEX: ^HSI
+  allIndices = [
+    {region: "US", symbol: "^IXIC", name: "Nasdaq"},
+    {region: "US", symbol: "^GSPC", name: "S&P 500"},
+    {region: "US", symbol: "^DJI", name: "Dow Jones Industrial Average"},
+    {region: "CA", symbol: "^GSPTSE", name: "S&P/TSX Composite index"},
+    {region: "HK", symbol: "^HSI", name: "HANG SENG INDEX"},
+   ] as any;
+
+
   constructor(private yfinanceService: YfinanceService) { }
 
-  ngOnInit(): void {
+  async ngOnInit(): Promise<void> {
     this.getMovers();
+
+    for(let index of this.allIndices){
+      await new Promise(f => setTimeout(f, 750));
+      this.getindices(index);
+    }
+    
+  }
+
+  getindices(index: any){
+    this.yfinanceService.getQuote(index.symbol, index.region).subscribe(async (quote: any)=>{
+      // this.indices.push(quote.quoteResponse.result[0].regularMarketPrice)
+      // await new Promise(f => setTimeout(f, 250));
+      index["price"] = quote.quoteResponse.result[0].regularMarketPrice
+    })
   }
 
   getMovers(){
@@ -38,7 +66,7 @@ export class HomeComponent implements OnInit {
         let info = {symbol: symbol}
         this.getStockPercentChange(symbol)
         this.getStockName(symbol)
-        await new Promise(f => setTimeout(f, 500));
+        await new Promise(f => setTimeout(f, 1000));
         this.stockInfoList.push(info);
         
       }
@@ -51,7 +79,7 @@ export class HomeComponent implements OnInit {
         let info = {symbol: symbol}
         this.getStockPercentChange(symbol)
         this.getStockName(symbol)
-        await new Promise(f => setTimeout(f, 500));
+        await new Promise(f => setTimeout(f, 1000));
         this.stockInfoListLosers.push(info);
       }
     })

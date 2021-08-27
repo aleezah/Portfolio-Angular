@@ -50,9 +50,22 @@ export class YfinanceService {
         'x-rapidapi-key': this.key,
         // useQueryString: true
       }
-    }
-    
-
-    )
+    })
   }
+
+  getQuote(symbol: string, region: string){
+    return this.http.get('https://apidojo-yahoo-finance-v1.p.rapidapi.com/market/v2/get-quotes', {
+      params:{
+        symbols: symbol,
+        region: region
+      },
+      headers: {
+        'x-rapidapi-host': this.host,
+        'x-rapidapi-key': this.key,
+        // useQueryString: true
+      }
+    })
+  }
+
+
 }

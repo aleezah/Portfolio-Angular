@@ -1,29 +1,51 @@
 <div class="container">
     <h1>Portfolio Home</h1>
 
-    <div style="width: 20%;">
-        <h4>Day Gainers:</h4>
-        <ul style="padding-left: 0px;">
-            <li *ngFor="let stock of stockInfoList" class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                    <div class="fw-bold">{{stock.symbol}}</div>
-                    {{stockNames[stock.symbol]}}
+    <div>
+        <div class="row">
+            <div class="col-sm" *ngFor="let index of allIndices">
+              <div class="card text-center">
+                <div class="card-header">
+                    {{ index.symbol}}
                 </div>
-                <span style="font-size: medium;" class="badge bg-success">&#8593; {{stockPercents[stock.symbol]}}</span>
-            </li>
-        </ul>
+                <div class="card-body">
+                  <h2 class="card-title">{{ index.price | currency }}</h2>
+                  <p class="card-text">{{ index.name }}</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
     </div>
     <hr>
-    <div style="width: 20%;">
-        <h4>Day Losers:</h4>
-        <ul style="padding-left: 0px;">
-            <li *ngFor="let stock of stockInfoListLosers" class="list-group-item d-flex justify-content-between align-items-start">
-                <div class="ms-2 me-auto">
-                <div class="fw-bold">{{stock.symbol}}</div>
-                {{stockNames[stock.symbol]}}
-                </div>
-                <span style="font-size: medium;" class="badge bg-danger">&#8595; {{stockPercents[stock.symbol]}}</span>
+
+    <div class="row">
+        <div class="col" style="width: 20%;">
+            <h2>Day Gainers:</h2>
+            <ul style="padding-left: 0px;">
+                <li *ngFor="let stock of stockInfoList" class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{stock.symbol}}</div>
+                        {{stockNames[stock.symbol]}}
+                    </div>
+                    <span style="font-size: medium;" class="badge bg-success">&#8593; {{stockPercents[stock.symbol]}}</span>
                 </li>
-        </ul>
+            </ul>
+        </div>
+        <!-- <hr> -->
+        <div class="col" style="width: 20%;">
+            <h2>Day Losers:</h2>
+            <ul style="padding-left: 0px;">
+                <li *ngFor="let stock of stockInfoListLosers" class="list-group-item d-flex justify-content-between align-items-start">
+                    <div class="ms-2 me-auto">
+                    <div class="fw-bold">{{stock.symbol}}</div>
+                    {{stockNames[stock.symbol]}}
+                    </div>
+                    <span style="font-size: medium;" class="badge bg-danger">&#8595; {{stockPercents[stock.symbol]}}</span>
+                    </li>
+            </ul>
+        </div>
     </div>
+    
+
 </div>
