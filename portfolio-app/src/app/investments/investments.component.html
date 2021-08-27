@@ -9,6 +9,7 @@
             <!-- <label for="option">Select an Account:</label> -->
             <select formControlName="option" class="form-select">
                 <option [value]="">All Investment Accounts</option>
+                
                 <ng-container *ngFor="let account of investmentAccounts; let i = index">
                     <option [value]="i">{{ account.investmentaccname }} #{{ account.investmentaccountid}}</option>
                 </ng-container>
@@ -17,18 +18,65 @@
         </div>
     </form>
 
-    <div *ngIf="investmentAccount && investmentAccount.investmentaccname">
-        <h2 >{{investmentAccount.investmentaccname}} #{{ investmentAccount.investmentaccountid}}</h2>
-        <h3>Account Name: {{investmentAccount.investmentaccname}}</h3>
-        <h3>Account ID: {{investmentAccount.investmentaccountid}}</h3>
-        <h3>Account Type:${{investmentAccount.funds}}</h3>
-        <!-- <h3>Account Funds: $ {{JSON.stringfy(investmentAccount.listOfETF)}}</h3> -->
-        <br>
-    </div >
-    
     <div *ngIf="!investmentAccount || !investmentAccount.investmentaccname">
         <h3 >All Investment Accounts</h3>
         <app-line-chart [data]="data" [labels]="labels"></app-line-chart>
     </div>
+
+    <div *ngIf="investmentAccount && investmentAccount.investmentaccname">
+        <h2 >{{investmentAccount.investmentaccname}} #{{ investmentAccount.investmentaccountid}}</h2>
+        <!-- <h3>Account Name: {{investmentAccount.investmentaccname}}</h3> -->
+        <!-- <h3>Account ID: {{investmentAccount.investmentaccountid}}</h3> -->
+        <h3>Funds: {{investmentAccount.funds | currency}}</h3>
+        <!-- <h3>Account Funds: $ {{JSON.stringfy(investmentAccount.listOfETF)}}</h3> -->
+        <br>
+        <div style="width: 40%;">
+            <h2>Stocks</h2>
+            <ul class="list-group list-group-flush">
+                <li *ngFor="let stock of investmentAccount.listOfStocks" class="list-group-item">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{ stock.stockname }}</div>
+                        Purchase Price: {{stock.purchaseprice | currency}}
+                  </div>
+                </li>
+            </ul>
+        </div>
+        <br>
+        <div style="width: 40%;">
+            <h2> Stock Transactions</h2>
+            <ul class="list-group list-group-flush">
+                <li *ngFor="let stock of investmentAccount.listOfStockTransaction" class="list-group-item">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{ stock.stockname }}</div>
+                        Amount: {{stock.amount | currency}} | Purchased: {{stock.transactiontime | date }}
+                  </div>
+                </li>
+            </ul>
+        </div>
+        <br>
+        <div style="width: 40%;">
+            <h2>ETFs</h2>
+            <ul class="list-group list-group-flush">
+                <li *ngFor="let etf of investmentAccount.listOfETF" class="list-group-item">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{ etf.etfname }}</div>
+                        Price: {{etf.purchaseprice | currency}} | Purchased: {{etf.timebought | date }}
+                  </div>
+                </li>
+            </ul>
+        </div>
+        <br>
+        <!-- <div style="width: 40%;">
+            <h2> Stock Transactions</h2>
+            <ul class="list-group list-group-flush">
+                <li *ngFor="let stock of investmentAccount.listOfStockTransaction" class="list-group-item">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{ stock.stockname }}</div>
+                        Amount: {{stock.amount | currency}} | Purchased: {{stock.transactiontime | date }}
+                  </div>
+                </li>
+            </ul>
+        </div> -->
+    </div >
     
 </div>
