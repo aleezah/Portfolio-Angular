@@ -60,11 +60,53 @@
                 <li *ngFor="let etf of investmentAccount.listOfETF" class="list-group-item">
                     <div class="ms-2 me-auto">
                         <div class="fw-bold">{{ etf.etfname }}</div>
-                        Price: {{etf.purchaseprice | currency}} | Purchased: {{etf.timebought | date }}
+                        Purchase Price: {{etf.purchaseprice | currency}} 
                   </div>
                 </li>
             </ul>
         </div>
+        <br>
+        <div style="width: 40%;">
+            <h2>ETF Transactions</h2>
+            <ul class="list-group list-group-flush">
+                <li *ngFor="let etf of investmentAccount.listOfEtfTransaction" class="list-group-item">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{ etf.eftname }}</div>
+                        Price: {{etf.etftransactionamount | currency}} | Purchased: {{etf.etftransactiontime | date }} | 
+                        Total: {{etf.numberofetf}}
+                  </div>
+                </li>
+            </ul>
+        </div>
+        <div *ngIf="investmentAccount.listOfFutures[0]"> 
+        <br>
+        <div style="width: 40%;">
+            <h2>Futures</h2>
+            <ul class="list-group list-group-flush">
+                <li *ngFor="let futures of investmentAccount.listOfFutures" class="list-group-item">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{ futures.futuresname }}</div>
+                        Expiry: {{futures.expirydate | date}} 
+                  </div>
+                </li>
+            </ul>
+        </div>
+    </div>
+        <br>
+        <div *ngIf="investmentAccount.listOfFuturesTransaction[0]"> 
+        <div style="width: 40%;">
+            <h2>Future Transactions</h2>
+            <ul class="list-group list-group-flush">
+                <li *ngFor="let futures of investmentAccount.listOfFuturesTransaction" class="list-group-item">
+                    <div class="ms-2 me-auto">
+                        <div class="fw-bold">{{ futures.futuresname }}</div>
+                        Price: {{futures.futurestransactionamount | currency}} | Purchased: {{futures.futurestransactiontime | date }}
+                        | Total: {{futures.numberoffutures}} 
+                    </div>
+                </li>
+            </ul>
+        </div>
+    </div>
         <br>
         <!-- <div style="width: 40%;">
             <h2> Stock Transactions</h2>
