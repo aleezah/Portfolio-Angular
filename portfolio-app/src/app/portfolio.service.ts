@@ -29,7 +29,7 @@ export class PortfolioService {
     return this.http.get(`${this.url}/investmentAccount/historialValue/1`)
   }
   getCashHistory(){
-    return this.http.get(`${this.url}/CashAccount/historicalValueById/1`)
+    return this.http.get(`${this.url}/CashAccount/historicalValue`)
   }
   getNetWorthHistory(){
     return this.http.get(`${this.url}/investmentAccount/networth`)

@@ -2,21 +2,20 @@
 <div class="container">
     <h1>Cash Account Information</h1>
      
-    <form [formGroup]="form">
-            
+
+    <form [formGroup]="form">    
         <div class="form-group">
-            <!-- <label for="option">Select Option to View:</label> -->
-            <select formControlName="option" class="form-control">
-                <option disabled>Select Account</option> 
-                <option >Select Account</option> 
+            <!-- <label for="option">Select an Account:</label> -->
+            <select formControlName="option" class="form-select">
+                <option [value]="">Select Account</option>
                 <ng-container *ngFor="let account of cashAcct; let i = index">
-                <option [value]="i">{{ account.cashaccname }} {{ account.cashaccountid }}</option>
-            </ng-container>
-          
+                    <option [value]="i">{{ account.cashaccname }} #{{ account.cashaccountid}}</option>
+                </ng-container>
             </select>
+            <br>
         </div>
-        <br>
-    </form>      
+    </form>
+     
     <h3>Account Name: {{acct.cashaccname}}</h3>
     <h3>Account ID: {{acct.cashaccountid}}</h3>
     <h3>Account Type: {{acct.accounttype}}</h3>
@@ -24,7 +23,7 @@
     <br>
 
 <div *ngIf="!cashAcct || !cashAcct.cashaccname">
-    <h3 >All Cash Account Trends</h3>
+    <h2 >All Cash Account Trends</h2>
     <app-cash-chart [data]="data" [labels]="labels"></app-cash-chart>
 </div>
 
