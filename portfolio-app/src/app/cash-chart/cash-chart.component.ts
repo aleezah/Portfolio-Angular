@@ -4,12 +4,6 @@ import { formatDate } from '@angular/common';
 import { BaseChartDirective } from 'ng2-charts';
 import { PortfolioService } from '../portfolio.service';
 
-type InitialData ={
-  labels: any[];
-  date: any[];
-};
-const labels = (window as any).__INITIAL_DATA__ as InitialData;
-
 @Component({
   selector: 'app-cash-chart',
   templateUrl: './cash-chart.component.html',

@@ -26,7 +26,7 @@ export class PortfolioService {
   }
 
   getInvestmentHistory(){
-    return this.http.get(`${this.url}/investmentAccount/historialValue/1`)
+    return this.http.get(`${this.url}/investmentAccount/historicalValue`)
   }
   getCashHistory(){
     return this.http.get(`${this.url}/CashAccount/historicalValue`)
